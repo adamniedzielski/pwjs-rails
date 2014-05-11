@@ -15,8 +15,7 @@ class CitiesController < ApplicationController
   # POST /cities.json
   def create
     @city = City.new(city_params)
-    @city.lon = "12.34"
-    @city.lat = "54.32"
+    fetch_coordinates
 
     if @city.save
       redirect_to cities_url
@@ -39,5 +38,12 @@ class CitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
       params.require(:city).permit(:name)
+    end
+
+    def fetch_coordinates
+      base_url = 'http://nominatim.openstreetmap.org/search'
+      location = HTTParty.get(base_url, :query => { :q => @city.name, :format => 'json' })[0]
+      @city.lat = location["lat"]
+      @city.lon = location["lon"]
     end
 end
