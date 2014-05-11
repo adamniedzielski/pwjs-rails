@@ -1,0 +1,7 @@
+
+<div ng-app="myApp" ng-controller="IndexController">
+  Search: <input ng-model="query">
+  <ul ng-repeat="city in cities | filter: { name: query }">
+    <li>{{city.name}} - {{city.lat}} - {{city.lon}}</li>
+  </ul>
+</div>

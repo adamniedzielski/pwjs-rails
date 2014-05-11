@@ -2,6 +2,7 @@ PwjsRails::Application.routes.draw do
   resources :cities, :only => [:new, :create, :destroy, :index] do
     collection do
       get 'index_with_ajax'
+      get 'index_with_angular'
     end
   end
 

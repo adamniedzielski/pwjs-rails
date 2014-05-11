@@ -40,6 +40,9 @@ class CitiesController < ApplicationController
   def index_with_ajax
   end
 
+  def index_with_angular
+  end
+
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.
