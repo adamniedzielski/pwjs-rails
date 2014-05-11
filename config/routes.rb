@@ -1,4 +1,6 @@
 PwjsRails::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :cities, :only => [:new, :create, :destroy, :index] do
     collection do
       get 'index_with_ajax'
