@@ -15,6 +15,8 @@ class CitiesController < ApplicationController
   # POST /cities.json
   def create
     @city = City.new(city_params)
+    @city.lon = "12.34"
+    @city.lat = "54.32"
 
     if @city.save
       redirect_to cities_url
