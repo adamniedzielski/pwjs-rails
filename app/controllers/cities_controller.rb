@@ -4,6 +4,10 @@ class CitiesController < ApplicationController
   # GET /cities.json
   def index
     @cities = City.all
+
+    if request.xhr?
+      render :layout => false
+    end
   end
 
   # GET /cities/new
@@ -31,6 +35,9 @@ class CitiesController < ApplicationController
     @city.destroy
     
     redirect_to cities_url
+  end
+
+  def index_with_ajax
   end
 
   private

@@ -1,5 +1,10 @@
 PwjsRails::Application.routes.draw do
-  resources :cities, :only => [:new, :create, :destroy, :index]
+  resources :cities, :only => [:new, :create, :destroy, :index] do
+    collection do
+      get 'index_with_ajax'
+    end
+  end
+
   root 'cities#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
